@@ -15,6 +15,7 @@ export class FormInputComponent implements OnInit {
   @Input('placeholder') placeholder: string;
   @Input('value') value: string | number;
   @Input('fieldName') fieldName: string;
+  @Input('disabled') disabled: boolean = false;
   @Input('required') required: boolean = false;
   @Input('clearField') clearField: boolean = true;
 
@@ -26,8 +27,18 @@ export class FormInputComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.setValidators();
+  }
+
+  ngOnChanges(e: any): void {
+    if (e.disabled) {
+      if (e.disabled.currentValue === true) {
+        this.inputControl.disable();
+      } else {
+        this.inputControl.enable();
+      }
+    }
   }
 
   setValidators(): void {

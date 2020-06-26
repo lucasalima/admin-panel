@@ -6,6 +6,7 @@
       type="text"
       [value]="form.value.name"
       fieldName="name"
+      [disabled]="usersLoading"
       (valueChanged)="formValueChanged($event)">
     </form-input>
 
@@ -15,10 +16,12 @@
       placeholder="Ex. pat@example.com"
       [value]="form.value.email"
       fieldName="email"
+      [disabled]="usersLoading"
       (valueChanged)="formValueChanged($event)">
     </form-input>
 
     <search-button
+      [disabled]="usersLoading"
       (click)="onFilter()">
     </search-button>
   </form>
@@ -78,7 +81,7 @@
               <span matTooltip="E-mail" matTooltipPosition="after">
                 <mat-icon>email</mat-icon>
                 <p>
-                  <a href="mailto:{{ user.email | lowercase }}">{{ user.email | lowercase }}</a>
+                  <a href="mailto:{{ user.email }}">{{ user.email }}</a>
                 </p>
               </span>
             </div>
