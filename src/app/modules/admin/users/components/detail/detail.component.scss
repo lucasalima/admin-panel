@@ -1,0 +1,50 @@
+::ng-deep {
+  users-detail {
+    .mat-grid-tile {
+      .mat-figure {
+        align-items: start;
+      }
+    }
+
+    .info {
+      display: block;
+
+      h6 {
+        border-bottom: 2px solid #e0e4e7;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: 500;
+        margin-bottom: 15px;
+        padding-bottom: 3px;
+      }
+
+      ul {
+        list-style: unset;
+        margin: 0;
+        padding: 0;
+
+        li {
+          display: block;
+
+          &:not(:last-child) {
+            margin-bottom: 20px;
+          }
+
+          span {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+          }
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+    }
+
+  }
+}

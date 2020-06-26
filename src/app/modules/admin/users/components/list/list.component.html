@@ -1,0 +1,112 @@
+<page-header [pageTitle]="pageTitle"></page-header>
+<page-body>
+  <form id="form-filter" [formGroup]="form">
+    <form-input
+      label="Name"
+      type="text"
+      [value]="form.value.name"
+      fieldName="name"
+      (valueChanged)="formValueChanged($event)">
+    </form-input>
+
+    <form-input
+      label="E-mail"
+      type="email"
+      placeholder="Ex. pat@example.com"
+      [value]="form.value.email"
+      fieldName="email"
+      (valueChanged)="formValueChanged($event)">
+    </form-input>
+
+    <search-button
+      (click)="onFilter()">
+    </search-button>
+  </form>
+
+  <progress-bar *ngIf="usersLoading"></progress-bar>
+
+  <div [hidden]="usersLoading || usersEmpty">
+    <table
+      mat-table
+      multiTemplateDataRows
+      matSort
+      [dataSource]="users">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>ID</th>
+        <td
+          mat-cell
+          *matCellDef="let user"
+          (click)="expandedUser = expandedUser === user ? null : user">
+          {{ user.id }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell mat-sort-header *matHeaderCellDef>Name</th>
+        <td
+          mat-cell
+          *matCellDef="let user"
+          (click)="expandedUser = expandedUser === user ? null : user">
+          {{ user.name }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="detail">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let user" style="text-align: right;">
+          <button
+            mat-icon-button
+            matTooltip="Details"
+            matTooltipPosition="before"
+            [routerLink]="['../detail', user.id]">
+            <mat-icon>launch</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="expandedDetail">
+        <td mat-cell *matCellDef="let user" [attr.colspan]="columnsToDisplay.length">
+          <div class="user-detail" [@detailExpand]="user == expandedUser ? 'expanded' : 'collapsed'">
+            <div class="user-info">
+              <span matTooltip="Username" matTooltipPosition="after">
+                <mat-icon>account_box</mat-icon>
+                <p>{{ user.username }}</p>
+              </span>
+            </div>
+            <div class="user-info">
+              <span matTooltip="E-mail" matTooltipPosition="after">
+                <mat-icon>email</mat-icon>
+                <p>
+                  <a href="mailto:{{ user.email | lowercase }}">{{ user.email | lowercase }}</a>
+                </p>
+              </span>
+            </div>
+            <div class="user-info">
+              <span matTooltip="Phone" matTooltipPosition="after">
+                <mat-icon>call</mat-icon>
+                <p>{{ user.phone }}</p>
+              </span>
+            </div>
+            <div class="user-info">
+              <span matTooltip="City" matTooltipPosition="after">
+                <mat-icon>location_on</mat-icon>
+                <p>{{ user.address.city }}</p>
+              </span>
+            </div>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr
+        mat-row *matRowDef="let user; columns: columnsToDisplay;"
+        class="user-row"
+        [class.user-expanded-row]="expandedUser === user">
+      </tr>
+      <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="user-detail-row"></tr>
+    </table>
+  </div>
+
+  <p *ngIf="!usersLoading && usersEmpty">Your search did'nt match any results.</p>
+</page-body>

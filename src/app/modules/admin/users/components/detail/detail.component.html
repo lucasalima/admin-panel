@@ -1,0 +1,93 @@
+<page-header
+  [pageTitle]="pageTitle"
+  backButton="true">
+</page-header>
+
+<page-body>
+  <mat-grid-list cols="3" rowHeight="2:2">
+    <mat-grid-tile>
+      <div class="info">
+        <h6># General</h6>
+        <ul>
+          <li>
+            <span>User ID</span>
+            <p>{{ user.id }}</p>
+          </li>
+          <li>
+            <span>Username</span>
+            <p>{{ user.username }}</p>
+          </li>
+          <li>
+            <span>E-mail</span>
+            <p>
+              <a href="mailto:{{ user.email | lowercase }}">{{ user.email | lowercase }}</a>
+            </p>
+          </li>
+          <li>
+            <span>Phone</span>
+            <p>{{ user.phone }}</p>
+          </li>
+          <li>
+            <span>Website</span>
+            <p>
+              <a [href]="user.website" target="_blank">{{ user.website }}</a>
+            </p>
+          </li>
+        </ul>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="info">
+        <h6># Address</h6>
+        <ul>
+          <li>
+            <span>City</span>
+            <p>{{ user.address.city }}</p>
+          </li>
+          <li>
+            <span>Street</span>
+            <p>{{ user.address.street }}</p>
+          </li>
+          <li>
+            <span>Suite</span>
+            <p>{{ user.address.suite }}</p>
+          </li>
+          <li>
+            <span>ZIP Code</span>
+            <p>{{ user.address.zipcode }}</p>
+          </li>
+          <li>
+            <span>Geolocation</span>
+            <p>{{ user.address.geo.lat }},{{ user.address.geo.lng }}</p>
+          </li>
+        </ul>
+      </div>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="info">
+        <h6># Company</h6>
+        <ul>
+          <li>
+            <span>Name</span>
+            <p>{{ user.company.name }}</p>
+          </li>
+          <li>
+            <span>Catch phrase</span>
+            <p>"{{ user.company.catchPhrase }}"</p>
+          </li>
+          <li *ngIf="companyBs.length > 0">
+            <span>Business</span>
+            <mat-chip-list aria-label="Fish selection">
+              <mat-chip
+                color="primary"
+                selected
+                *ngFor="let bs of companyBs">
+                {{ bs }}
+              </mat-chip>
+            </mat-chip-list>
+          </li>
+        </ul>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</page-body>

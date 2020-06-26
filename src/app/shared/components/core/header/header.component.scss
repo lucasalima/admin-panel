@@ -1,0 +1,12 @@
+::ng-deep {
+  app-header {
+    mat-toolbar  {
+      display: flex;
+      justify-content: space-between;
+
+      img#logo {
+        height: 46px;
+      }
+    }
+  }
+}

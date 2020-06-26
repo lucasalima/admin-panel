@@ -1,27 +1,28 @@
-# AdmPanel
-
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
 
-## Development server
+## Available Scripts
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+First you need to install all the application dependencies:
 
-## Code scaffolding
+### `npm install`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Then you can run:
 
-## Build
+### `npm start`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Open [http://localhost:4200](http://localhost:4200) to view it in the browser.
 
-## Running unit tests
+## How this Admin Panel works?
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+You can search users by name, e-mail or just list all of them.
 
-## Running end-to-end tests
+To see basic user details just hit the register line and it will be expanded.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+If you want to see all details about some user just hit the `Button` at the end of register line.<br />
+Then you will be able to see the user profile.
 
-## Further help
+To go back to the user search page you need to hit the `Back Button`.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+## API
+
+This project works with [JSONPlaceholder](https://jsonplaceholder.typicode.com).

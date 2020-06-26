@@ -1,0 +1,19 @@
+<mat-form-field>
+  <mat-label>{{ label }}</mat-label>
+  <input
+    matInput
+    [type]="type"
+    [placeholder]="placeholder"
+    [formControl]="inputControl"
+    [required]="required"
+    (input)="onValueChanged()">
+  <button
+    mat-button
+    matSuffix
+    mat-icon-button
+    aria-label="Clear"
+    (click)="onClearInput()"
+    *ngIf="clearField && inputControl.value">
+    <mat-icon>close</mat-icon>
+  </button>
+</mat-form-field>
