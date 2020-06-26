@@ -1,6 +1,6 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.0.
 
-## Available Scripts
+## Available scripts
 
 First you need to install all the application dependencies:
 
@@ -8,11 +8,11 @@ First you need to install all the application dependencies:
 
 Then you can run:
 
-### `npm start`
+### `npm run start`
 
 Open [http://localhost:4200](http://localhost:4200) to view it in the browser.
 
-## How this Admin Panel works?
+## How this administrator panel works?
 
 You can search users by name, e-mail or just list all of them.
 
